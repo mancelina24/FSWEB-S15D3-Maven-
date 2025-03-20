@@ -41,16 +41,14 @@ public class Main {
     public static Map<Integer, Employee> findUniques(List<Employee> employees) {
         Map<Integer, Integer> freqMap = new LinkedHashMap<>();
         for (Employee employee : employees) {
-            if (employee == null) { // Null kontrolü ekliyoruz
-                continue;
-            }
+            if (employee == null) continue;
+
             freqMap.put(employee.getId(), freqMap.getOrDefault(employee.getId(), 0) + 1);
         }
         Map<Integer, Employee> uniques = new LinkedHashMap<>();
         for(Employee employee : employees) {
-            if (employee == null) { // Null kontrolü burada da olmalı
-                continue;
-            }
+            if (employee == null) continue;
+
             if (freqMap.get(employee.getId()) >= 1 && !uniques.containsKey(employee.getId())) {
                 uniques.put(employee.getId(), employee);
             }
@@ -65,12 +63,5 @@ public class Main {
         onlyUnique.removeAll(duplicates);
         return onlyUnique;
     }
-
-
-
-
-
-
-
 
 }
